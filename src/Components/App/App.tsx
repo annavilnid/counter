@@ -9,15 +9,18 @@ import {incrementAC, resetAC, setLimitsAC} from "../store/counter-redusers";
 import {ReduxStateType} from "../store/store";
 
 function App() {
-  const stateMinValue = useSelector<ReduxStateType, number>(state => state.minValue)
-  const stateMaxValue = useSelector<ReduxStateType, number>(state => state.maxValue)
-  const stateCounterValue = useSelector<ReduxStateType, number>(state => state.counterValue)
-  const dispatch = useDispatch()
-  const counterValue = stateCounterValue
-  const [minValue, setMinValue] = useState(stateMinValue)
-  const [maxValue, setMaxValue] = useState(stateMaxValue)
+  const stateMinValue = useSelector<ReduxStateType, number>(state => state.minValue);
+  const stateMaxValue = useSelector<ReduxStateType, number>(state => state.maxValue);
+  const stateCounterValue = useSelector<ReduxStateType, number>(state => state.counterValue);
+  const dispatch = useDispatch();
+  const counterValue = stateCounterValue;
+  const [minValue, setMinValue] = useState(stateMinValue);
+  const [maxValue, setMaxValue] = useState(stateMaxValue);
   const [message, setMessage] = useState('');
   const [showSettings, setShowSettings] = useState(false);
+  const error = 'Incorrect value!';
+  const success = 'Inter value and press \'set\'';
+
 
   const increaseCounterValueHandler = () => {
     if (counterValue < maxValue) {
@@ -30,7 +33,7 @@ function App() {
   }
 
   const addClassCounter = () => {
-    return counterValue >= maxValue || message === 'Incorrect value!'? "red span" : "span"
+    return counterValue >= maxValue && message !== success || message === error? "red span" : "span"
   }
 
   let disableSet =  minValue < 0 || maxValue <= minValue || minValue > counterValue || maxValue < counterValue;
@@ -61,9 +64,9 @@ function App() {
 
   const createString = (min: number, max: number, value: number) => {
     if (min < 0 || max <= min || value > max || value < min ) {
-      setMessage('Incorrect value!');
+      setMessage(error);
     } else {
-      setMessage('Inter value and press \'set\'');
+      setMessage(success);
     }
   }
 
