@@ -11,5 +11,13 @@ export const store = createStore(
   persistedState
 );
 
+store.subscribe(() => {
+  saveState({
+    minValue: store.getState().minValue,
+    maxValue: store.getState().maxValue,
+    counterValue: store.getState().counterValue,
+  });
+});
+
 //@ts-ignore
 window.store = store

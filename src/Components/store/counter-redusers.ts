@@ -13,7 +13,6 @@ const initialState: StateType = {
   minValue: 0,
   maxValue: 5,
   counterValue: 1,
-
 }
 
 export function counterReducer (state: StateType = initialState, action: ActionsType): StateType {
