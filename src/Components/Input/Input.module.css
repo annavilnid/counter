@@ -1,0 +1,20 @@
+.label {
+    color: #61dafb;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.input_wrapper {
+    max-width: 90%;
+}
+
+.input {
+    outline: 0;
+    border-radius: 5px;
+    max-width: 50%;
+    margin-right: 0;
+}
+
+.error {
+    border: 2px solid red;
+}
